@@ -1,23 +1,22 @@
 import React, { useState, useContext } from "react";
-import { ThemeContext } from "./App";
-
-export default function CounterHooks({ initialCount }) {
-  const [count, setCount] = useState(initialCount);
-  const style = useContext(ThemeContext);
+import { Theme } from "./App";
+export default function CounterHooks({ initialValue }) {
+  const [count, setCount] = useState(initialValue);
+  const color = useContext(Theme);
   return (
     <div>
       <button
-        style={style}
-        onClick={() => setCount(prevCount => prevCount - 1)}
-      >
-        -
-      </button>
-      <span>{count}</span>
-      <button
-        style={style}
+        style={color}
         onClick={() => setCount(prevCount => prevCount + 1)}
       >
         +
+      </button>
+      <span>{count}</span>
+      <button
+        style={color}
+        onClick={() => setCount(prevCount => prevCount - 1)}
+      >
+        -
       </button>
     </div>
   );

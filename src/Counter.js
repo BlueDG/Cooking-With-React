@@ -1,36 +1,36 @@
 import React, { Component } from "react";
-import { ThemeContext } from "./App";
+import { Theme } from "./App";
 
 export default class Counter extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      count: props.initialCount
+      value: props.initialValue
     };
   }
 
   render() {
     return (
-      <ThemeContext.Consumer>
-        {style => (
+      <Theme.Consumer>
+        {color => (
           <div>
-            <button style={style} onClick={() => this.changeCount(-1)}>
+            <button style={color} onClick={() => this.changeValue(-1)}>
               -
             </button>
-            <span>{this.state.count}</span>
-            <button style={style} onClick={() => this.changeCount(+1)}>
+            <span>{this.state.value}</span>
+            <button style={color} onClick={() => this.changeValue(+1)}>
               +
             </button>
           </div>
         )}
-      </ThemeContext.Consumer>
+      </Theme.Consumer>
     );
   }
 
-  changeCount(amount) {
-    this.setState(prevState => {
-      return { count: prevState.count + amount };
+  changeValue(v) {
+    this.setState(prevValue => {
+      return { value: prevValue.value + v };
     });
   }
 }
